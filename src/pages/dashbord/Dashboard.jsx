@@ -13,10 +13,8 @@ function Dashboard() {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [isLoading, setIsLoading] = useState(true);
   const [Excledata, setExcleData] = useState([]);
-  const { PayInLists } = useSelector(
-    (state) => state.PayInList
-  );
-const dispatch = useDispatch()
+  const { PayInLists } = useSelector((state) => state.PayInList);
+  const dispatch = useDispatch();
 
   const AdminBalance = async (date) => {
     try {
@@ -24,10 +22,11 @@ const dispatch = useDispatch()
       const formattedDate = `${date.getFullYear()}-${String(
         date.getMonth() + 1
       ).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
-   
+
       const response = await axios.get(apiUrl + formattedDate);
       if (response.data && response.data.success === 1) {
-        setData(response.data.TotalAmount);
+      
+        setData(response?.data?.data);
         setError(null);
       } else if (response.data.success === 2) {
         setError(response.data.message);
@@ -40,12 +39,9 @@ const dispatch = useDispatch()
       setIsLoading(false);
     }
   };
-
   useEffect(() => {
     dispatch(getPayInList());
-},[])
-
-
+  }, []);
 
   useEffect(() => {
     AdminBalance(selectedDate);
@@ -61,8 +57,8 @@ const dispatch = useDispatch()
 
   let withdrawTotal = 0;
   let initiatedTotal = 0;
-  data.forEach((item) => {
-    if (item.payment_status === "WITHDRAW_REQUEST_SETTELED") {
+  data?.forEach((item) => {
+    if (item.payment_status === "WITHDRAW_REQUEST_SETTLED") {
       withdrawTotal = item.total;
     } else if (item.payment_status === "PAYMENT_SUCCESS") {
       initiatedTotal = item.total;
@@ -70,11 +66,10 @@ const dispatch = useDispatch()
   });
 
   const TodayDate = () => {
-    setSelectedDate(new Date())
-}
+    setSelectedDate(new Date());
+  };
 
-
-
+ 
 
   return (
     <div className="container-fluid mt-5 " id="#home">
@@ -83,7 +78,8 @@ const dispatch = useDispatch()
           {" "}
           <button
             type="button"
-            className="btn   text-light me-4 btnshadow bg-btn px-3" onClick={TodayDate}
+            className="btn   text-light me-4 btnshadow bg-btn px-3"
+            onClick={TodayDate}
           >
             Today
           </button>{" "}

@@ -1,5 +1,10 @@
 import "./App.css";
-import { BrowserRouter as Router, Route, Routes,Navigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import Login from "./pages/auth/Login";
 import Dashboard from "./pages/dashbord/Dashboard";
 import { ToastContainer } from "react-toastify";
@@ -18,13 +23,15 @@ import { useSelector } from "react-redux";
 function App() {
   const { user, isLoading } = useSelector((state) => state.auth);
 
+ 
+
   if (isLoading) {
     return <Loder />;
   }
 
   return (
     <Router>
-      {user && user?.result?.privilage ===1 ? (
+      {user && user?.result?.privilage === 1 ? (
         <>
           <Sidebar>
             <Appbar />
@@ -34,9 +41,12 @@ function App() {
               <Route path="/PayOutList" element={<PayoutList />} />
               <Route path="/PayInList" element={<PayInList />} />
               <Route path="/UserInfo/:id" element={<Userinfo />} />
-              <Route path="/PreviousTransaction/:id" element={<PreTransaction />} />
-               {/* Add a fallback route for handling 404 errors */}
-               <Route path="/*" element={<Navigate to="/" />} />
+              <Route
+                path="/PreviousTransaction/:id"
+                element={<PreTransaction />}
+              />
+              {/* Add a fallback route for handling 404 errors */}
+              <Route path="/*" element={<Navigate to="/" />} />
             </Routes>
           </Sidebar>
         </>

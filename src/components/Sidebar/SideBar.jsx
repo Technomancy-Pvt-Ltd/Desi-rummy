@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 import { FaBars, FaHome, FaUsers } from "react-icons/fa";
 import { MdOutlinePendingActions } from "react-icons/md";
 import { AiOutlineFileDone } from "react-icons/ai";
@@ -6,6 +6,7 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import SidebarMenu from "./SidebarMenu";
 import "./SideBar.css";
+import { NavLink } from "react-router-dom";
 const routes = [
   {
     path: "/",

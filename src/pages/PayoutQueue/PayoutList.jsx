@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "../Users_list/User.css";
 import {
   getPayoutList,
-  Payoutreset,
 } from "../../features/PayoutList/PayoutListSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../components/Loader";
@@ -163,7 +162,7 @@ function PayoutList() {
               </thead>
               <tbody>
                 {displayedUsers?.map((user) => {
-                  const {upi,transaction_id, user_name, createdAt, amount, id,mobile } =
+                  const {upi,transaction_id, user_name, createdAt, amount, id } =
                     user;
                   return (
                     <tr key={transaction_id}>

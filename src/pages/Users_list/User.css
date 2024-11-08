@@ -3,13 +3,7 @@
   display: flex;
   justify-content: center;
 }
-.bg-btn {
-  background: #421265;
-}
-.bg-btn:hover {
-  background: #3d115d;
-  color: white;
-}
+
 .userTR th {
   font-size: 20px;
   color: #f64668;

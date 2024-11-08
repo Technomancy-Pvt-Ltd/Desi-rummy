@@ -98,8 +98,8 @@ function PayInQueue() {
 
   return (
     <div className="container-fluid">
-      <div className="users mt-3 px-5">
-        <div className="  mb-3">
+      <div className="users mt-5  px-5">
+        <div className="mb-3">
           <span className="btn btn-dark text-light bg-btn my-3">
             All Recived Payment List
           </span>
@@ -120,7 +120,7 @@ function PayInQueue() {
             </thead>
             <tbody>
               {displayedUsers?.map((user) => {
-                const { transaction_id, user_name,mobile, createdAt, amount, id } =
+                const { transaction_id, user_name, createdAt, amount, id } =
                   user;
                 return (
                   <tr  key={transaction_id}>

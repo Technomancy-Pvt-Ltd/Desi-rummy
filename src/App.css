@@ -31,7 +31,14 @@ body {
   background: #2c0c42;
 }
 
-
+.bg-btn {
+  background: #421265;
+  padding: 5px 10px;
+}
+.bg-btn:hover {
+  background: #3d115d;
+  color: white;
+}
 
 
 .wrapper-t {
